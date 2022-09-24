@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.17;
+pragma solidity 0.8.15;
 
 import "openzeppelin-contracts/token/ERC721/IERC721.sol";
 import "openzeppelin-contracts/token/ERC20/IERC20.sol";
 import "openzeppelin-contracts/security/ReentrancyGuard.sol";
+import {IConnextHandler} from "nxtp/core/connext/interfaces/IConnextHandler.sol";
+import {IExecutor} from "nxtp/core/connext/interfaces/IExecutor.sol";
 import {LibCrossDomainProperty} from "nxtp/core/connext/libraries/LibCrossDomainProperty.sol";
 
 error PriceNotMet(address nftAddress, uint256 tokenId, uint256 price);
@@ -42,8 +44,8 @@ contract AtomXTarget is ReentrancyGuard {
     );
 
     IERC20 constant public paymentToken = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
+    IExecutor immutable executor;
     address immutable originContract;
-    address immutable executor;
     uint256 immutable originDomain;
 
     mapping(address => mapping(uint256 => Listing)) private s_listings;
@@ -96,9 +98,9 @@ contract AtomXTarget is ReentrancyGuard {
         _;
     }
 
-    constructor(address _originContract, address _executor, uint256 _originDomain) {
+    constructor(address _originContract, IConnextHandler _connext, uint256 _originDomain) {
         originContract = _originContract;
-        executor = _executor;
+        executor = _connext.executor();
         originDomain = _originDomain;
     }
 
@@ -168,8 +170,17 @@ contract AtomXTarget is ReentrancyGuard {
         emit ItemBought(msg.sender, nftAddress, tokenId, listedItem.price);
     }
 
-    function buyItemXChain() external {
-
+    function buyItemXChain(address buyer, address seller, uint256 price, address nftAddress, uint256 tokenId) 
+        external
+        isListed(nftAddress, tokenId)
+        nonReentrant
+        onlySource
+    {
+        Listing memory listedItem = s_listings[nftAddress][tokenId];
+        require(seller == listedItem.seller && price == listedItem.price);
+        delete (s_listings[nftAddress][tokenId]);
+        IERC721(nftAddress).safeTransferFrom(listedItem.seller, buyer, tokenId);
+        emit ItemBought(buyer, nftAddress, tokenId, listedItem.price);
     }
 
     /*
