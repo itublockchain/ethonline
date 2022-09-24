@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.15;
 
-import "openzeppelin-contracts/token/ERC721/IERC721.sol";
-import "openzeppelin-contracts/token/ERC20/IERC20.sol";
-import "openzeppelin-contracts/security/ReentrancyGuard.sol";
+import "openzeppelin-contracts/contracts/token/ERC721/IERC721.sol";
+import "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
+import "openzeppelin-contracts/contracts/security/ReentrancyGuard.sol";
 import {IConnextHandler} from "nxtp/core/connext/interfaces/IConnextHandler.sol";
 import {IExecutor} from "nxtp/core/connext/interfaces/IExecutor.sol";
 import {LibCrossDomainProperty} from "nxtp/core/connext/libraries/LibCrossDomainProperty.sol";
@@ -43,7 +43,7 @@ contract AtomXTarget is ReentrancyGuard {
         uint256 price
     );
 
-    IERC20 constant public paymentToken = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
+    IERC20 constant public paymentToken = IERC20(0x73967c6a0904aA032C103b4104747E88c566B1A2); //DAI
     IExecutor immutable executor;
     address immutable originContract;
     uint256 immutable originDomain;

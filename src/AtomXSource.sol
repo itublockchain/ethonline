@@ -3,10 +3,10 @@ pragma solidity 0.8.15;
 
 import {IConnextHandler} from "nxtp/core/connext/interfaces/IConnextHandler.sol";
 import {CallParams, XCallArgs} from "nxtp/core/connext/libraries/LibConnextStorage.sol";
-import "openzeppelin-contracts/token/ERC20/IERC20.sol";
+import "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 
 contract AtomXSource {
-    IERC20 constant public paymentToken = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
+    IERC20 constant public paymentToken = IERC20(0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1); //DAI
     IConnextHandler immutable connext;
     address immutable marketplaceAddress;
     uint32 immutable sourceDomain;
