@@ -1,0 +1,14 @@
+.wrapper {
+    background-color: rgb(253, 207, 207);
+    margin: 10px;
+    color: black;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .buttons{
+        display: flex;
+        gap: 30px;
+    }
+}

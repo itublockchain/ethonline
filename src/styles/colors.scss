@@ -1,12 +1,30 @@
 body.light {
   // Global
   --body-bg-1: #F9F9F9;
+  --text-1: #1a1c1f;
+  --text-2: white;
+
+  // Navbar
+  --navbar-bg-1: #1A1C1F;
+
+  // Listing
+  --listing-bg-1: black;
+  --listing-text-1: white;
 
 }
 
 body.dark {
-  // Misc
-  --body-bg-1: #0E2038;
+  // Global
+  --body-bg-1: #1A1C1F;
+  --text-1: white;
+  --text-2: #1a1c1f;
+
+  // Navbar
+  --navbar-bg-1: #fff;
+
+  // Listing
+  --listing-bg-1: white;
+  --listing-text-1: black;
 }
 
 .link {

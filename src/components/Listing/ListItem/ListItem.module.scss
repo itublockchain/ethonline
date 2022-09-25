@@ -1,0 +1,17 @@
+.wrapper {
+    width: 500px;
+    padding: 25px;
+    background-color: var(--listing-bg-1);
+    border-radius: 8px;
+    color: var(--listing-text-1);
+
+    .inputs {
+        div {
+
+            span {
+                width: 200px;
+
+            }
+        }
+    }
+}

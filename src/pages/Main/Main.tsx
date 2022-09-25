@@ -1,10 +1,12 @@
 import styles from "./Main.module.scss";
-import { Example } from "components";
+import { Navbar, Listing, NFTable } from "components";
 
 const Main = () => {
   return (
     <div className={styles.wrapper}>
-      <Example />
+      <Navbar />
+      <Listing />
+      <NFTable />
     </div>
   );
 };
