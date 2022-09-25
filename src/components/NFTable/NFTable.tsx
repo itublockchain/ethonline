@@ -60,7 +60,7 @@ const NFTable = () => {
             //   <div>{hexToDecimal(data.topics[3])}</div>
             //   <div>{hexToDecimal(data.data)}</div>
             // </div>
-            <NFT
+            <NFT key={i}
               seller={data.topics[1]}
               NFTAddress={data.topics[2]}
               tokenId={data.topics[3]}

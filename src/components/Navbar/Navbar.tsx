@@ -14,7 +14,7 @@ const Navbar = () => {
     <div className={styles.wrapper}>
       <div className={styles.logo}>
         <img src={LOGO}></img>
-        <div>Cross Chain NFT World</div>
+        <div>Atomic NFT Marketplace</div>
       </div>
 
       <div className={styles.buttons}>

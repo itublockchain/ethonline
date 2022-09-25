@@ -5,10 +5,10 @@ body.light {
   --text-2: white;
 
   // Navbar
-  --navbar-bg-1: #1A1C1F;
+  --navbar-bg-1: rgb(231, 102, 102);
 
   // Listing
-  --listing-bg-1: black;
+  --listing-bg-1: rgb(231, 102, 102);
   --listing-text-1: white;
 
 }
@@ -23,7 +23,7 @@ body.dark {
   --navbar-bg-1: #fff;
 
   // Listing
-  --listing-bg-1: white;
+  --listing-bg-1: rgb(242, 164, 164);
   --listing-text-1: black;
 }
 
