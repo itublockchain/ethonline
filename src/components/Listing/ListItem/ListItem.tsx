@@ -12,7 +12,7 @@ const ListItem = () => {
   const [tokenId, setTokenId] = useState("");
   const [price, setPrice] = useState("");
   const { listItem } = useMarketplaceFunctions();
-  const { signer } = useAccount();
+  const { signer, provider } = useAccount();
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>ListItem</div>
@@ -42,6 +42,19 @@ const ListItem = () => {
           ></input>
         </div>
       </div>
+      <button
+        onClick={() => {
+          // listItem(NFTAddress, tokenId, price);
+          const sd = async () => {
+            const xd = new ethers.Contract(NFTAddress, ABIS.NFT, signer);
+            const x = xd.connect(signer);
+            await xd.approve(ADDRESSES.MARKETPLACE, tokenId);
+          };
+          sd();
+        }}
+      >
+        Approve NFT
+      </button>
       <button
         onClick={() => {
           // listItem(NFTAddress, tokenId, price);

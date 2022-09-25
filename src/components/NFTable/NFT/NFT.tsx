@@ -31,20 +31,25 @@ const NFT = ({ seller, NFTAddress, tokenId, price }: NFT) => {
 
   const buyItemXChain = async () => {
     const contract = new ethers.Contract(
-      "0xAF4dC4a50B141b8e39334101C726D40BDCf76834",
+      ADDRESSES.SOURCE,
       ABIS.SOURCE,
       provider
     );
 
-    // console.log(NFTAddress)
+    console.log(
+      deleteZeros(seller),
+      hexToDecimal(tokenId),
+      deleteZeros(NFTAddress),
+      hexToDecimal(price)
+    );
 
     const tx = await contract
       .connect(signer)
       .xChainUpdate(
         deleteZeros(seller),
-        price,
+        hexToDecimal(tokenId),
         deleteZeros(NFTAddress),
-        tokenId,
+        hexToDecimal(price),
         { gasLimit: 999999 }
       );
     console.log(tx.wait());
